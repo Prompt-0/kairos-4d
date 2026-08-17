@@ -1,0 +1,186 @@
+/* =========================================================================
+   KAIROS 4D — Custom Design System & CSS Engine
+   ========================================================================= */
+
+:root {
+  /* Common Palette */
+  --bg-dark: #07090e;
+  --panel-bg: rgba(15, 23, 42, 0.85);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 240, 255, 0.4);
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  
+  /* 1926 Gilded Era Tokens */
+  --era-1926-gold: #d4af37;
+  --era-1926-amber: #e6a15c;
+  --era-1926-brass: #b58d3d;
+  --era-1926-bg: #120e0a;
+  --era-1926-card: #201710;
+  --era-1926-border: #7c5c2d;
+
+  /* 2026 Modern Era Tokens */
+  --era-2026-cyan: #06b6d4;
+  --era-2026-blue: #3b82f6;
+  --era-2026-teal: #14b8a6;
+  --era-2026-bg: #09131d;
+  --era-2026-card: #102133;
+  --era-2026-border: #1e4b75;
+
+  /* 2156 Cybernetic Era Tokens */
+  --era-2156-neon: #a855f7;
+  --era-2156-pink: #f43f5e;
+  --era-2156-cyan: #00f0ff;
+  --era-2156-bg: #0d0617;
+  --era-2156-card: #1c0f33;
+  --era-2156-border: #5b21b6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Typography Classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Glassmorphism & Panel Utilities */
+.glass-panel {
+  background: rgba(13, 17, 23, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-panel-amber {
+  background: rgba(32, 23, 16, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(18, 14, 10, 0.7);
+}
+
+.glass-panel-cyan {
+  background: rgba(16, 33, 51, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(9, 19, 29, 0.7);
+}
+
+.glass-panel-neon {
+  background: rgba(28, 15, 51, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(13, 6, 23, 0.8);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Scanline / CRT Shader Overlays */
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.35) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.vignette-overlay {
+  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.65) 100%);
+  pointer-events: none;
+}
+
+/* Glow Effects */
+.glow-gold {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+}
+.glow-cyan {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.35);
+}
+.glow-neon {
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.45);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+}
+.text-glow-neon {
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.7);
+}
+.text-glow-gold {
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes warp-in {
+  0% { opacity: 0; filter: blur(12px) brightness(2); transform: scale(0.96); }
+  100% { opacity: 1; filter: blur(0px) brightness(1); transform: scale(1); }
+}
+.animate-warp {
+  animation: warp-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes yarn-pulse {
+  0%, 100% { stroke-dashoffset: 0; }
+  50% { stroke-dashoffset: 24; }
+}
+.animate-yarn {
+  stroke-dasharray: 6 4;
+  animation: yarn-pulse 2s linear infinite;
+}
+
+/* Range input style */
+input[type="range"] {
+  accent-color: var(--era-2026-cyan);
+}
